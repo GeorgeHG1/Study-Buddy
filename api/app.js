@@ -15,9 +15,20 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+async function getQNA(s) {
+    const arr = s.split('\\n')
+    const QNA = []
+    for (let i = 0; i < arr.length; i+=2){
+        QNA.push([arr[i], arr[i+1]])
+    }
+    return QNA
+}
+
 app.post('/getQuestions', async (req, res) =>{
     const info = req.body.info
-    res.status(200).send({message: info})
+    const qa = await getQNA(info)
+    console.log(qa)
+    res.status(200).send({message: qa})
     return
 })
 
