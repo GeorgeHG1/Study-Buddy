@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Flashcard from './card.js';
 
 const flashcard = {
-  'id': 0, 'question': "Who is gay?", 'answer': "Carl" 
+  'id': 0, 'question': "I hate ayush sahi so much he is trying to take my socks off like  a creepy nonce foot fetish rapist etcetcetc ayush so mena ajnwndwdniwssndaidwindiwndinwidnidwndiwnianaowdniwndioqnd ijsijsidsij?", 'answer': "Carl" 
 }
 
 function MainPage(props) {
