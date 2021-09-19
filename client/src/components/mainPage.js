@@ -4,6 +4,7 @@ import Flashcard from './card.js';
 
 function MainPage(props) {
     const [lectureText, setLectureText] = useState("");
+    const [loading, setLoading] = useState(false);
     const [cards,setCards] = useState([])
 
     const getQuestions = async () => {
@@ -17,20 +18,25 @@ function MainPage(props) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     }
+    setLoading(true)
     var i = await fetch('http://localhost:4000/getQuestions', requestOptions)
     var r = await i.json()
 
     console.log(r)
     setCards([])
     setCards(r.message)
+    setLoading(false)
+
 
     }
 
     return(
+        !loading?
+        (
         <div className="container-fluid poppin">
         <div className="row align-items-center" style={{textAlign:"center",verticalAlign: "middle"}}>
             <div className="col-lg-12" style={{height:"0vh",verticalAlign: "middle",textAlign:"Center",padding:"0vh 5vw 0px 5vw"}}>
-              <h1 style={{fontSize:45,fontWeight:700}}>Writing Buddy.</h1>
+              <h1 style={{fontSize:45,fontWeight:700}}>Study Buddy</h1>
               <br/>
                 <p></p>
                 <div className="form-group" style={{height:"40vh", width:"60vw", margin: "auto"}}>
@@ -59,7 +65,11 @@ function MainPage(props) {
 
             </div>
         </div>
-      </div>
+      </div>)
+      :
+      (<div className="spinner-border" style={{"margin":"40vh 48vw"}}role="status">
+        <span className="sr-only">Loading...</span>
+      </div>)
     )
 }
 
