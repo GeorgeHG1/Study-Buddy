@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Flashcard from './card.js';
 
-const flashcard = {
-  'id': 0, 'question': "I hate ayush sahi so much he is trying to take my socks off like  a creepy nonce foot fetish rapist etcetcetc ayush so mena ajnwndwdniwssndaidwindiwndinwidnidwndiwnianaowdniwndioqnd ijsijsidsij?", 'answer': "Carl" 
-}
-
-
 
 function MainPage(props) {
     const [lectureText, setLectureText] = useState("");
+    const [cards,setCards] = useState([])
 
     const getQuestions = async () => {
     console.log(lectureText)
@@ -25,6 +21,8 @@ function MainPage(props) {
     var r = await i.json()
 
     console.log(r)
+    setCards([])
+    setCards(r.message)
 
     }
 
@@ -33,30 +31,32 @@ function MainPage(props) {
         <div className="row align-items-center" style={{textAlign:"center",verticalAlign: "middle"}}>
             <div className="col-lg-12" style={{height:"0vh",verticalAlign: "middle",textAlign:"Center",padding:"0vh 5vw 0px 5vw"}}>
               <h1 style={{fontSize:45,fontWeight:700}}>Writing Buddy.</h1>
-              <p
-                style = {{width:"30vw", margin:"auto"}}
-              >
-                <b>WRITING BUDDY</b> is a study buddy that helps you study for your next quiz, test, or exam! Paste your lecture notes in the box 
-                and it will generate a comprehensive list of questions that can help review and reinforce new material.
-              </p>
               <br/>
-                <button type="button" className="btn btn-success" onClick={getQuestions}>
-                    Generate Questions
-                </button>
-                <br />
-                <br />
+                <p></p>
                 <div className="form-group" style={{height:"40vh", width:"60vw", margin: "auto"}}>
                     <textarea
                         value={lectureText}
                         onChange={(e)=>{setLectureText(e.target.value)}}
                         className="form-control"
                         id="exampleFormControlTextarea1"
-                        style={{minHeight:"40vh", fontSize: 28, marginBottom: 100}}
+                        style={{minHeight:"40vh", fontSize: 14, marginBottom: 100}}
                     >
                     </textarea>
                 </div>
+                <br/>
+                <button type="button" className="btn btn-success" onClick={getQuestions}>
+                    Generate Questions
+                </button>
+                <br/>
+                <br/>
               <br/>
-              <Flashcard flashcard={flashcard}/>
+              <div className="card-columns" style={{"column-count": "3"}}>
+              {cards.map((item,i) => <Flashcard flashcard={item} fr={true}/>)}
+              </div>
+              {/* {cards.toString()} */}
+
+              
+
             </div>
         </div>
       </div>
