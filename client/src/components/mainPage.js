@@ -30,7 +30,7 @@ function MainPage(props) {
         <div className="container-fluid poppin">
         <div className="row align-items-center" style={{textAlign:"center",verticalAlign: "middle"}}>
             <div className="col-lg-12" style={{height:"0vh",verticalAlign: "middle",textAlign:"Center",padding:"0vh 5vw 0px 5vw"}}>
-              <h1 style={{fontSize:45,fontWeight:700}}>Writing Buddy.</h1>
+              <h1 style={{fontSize:45,fontWeight:700}}>Study Buddy.</h1>
               <br/>
                 <p></p>
                 <div className="form-group" style={{height:"40vh", width:"60vw", margin: "auto"}}>
