@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Flashcard from './card.js';
 
 const flashcard = {
   'id': 0, 'question': "Who is gay?", 'answer': "Carl" 
 }
 
+
+
 function MainPage(props) {
-    const [storyText, setStoryText] = useState("");
+    const [lectureText, setLectureText] = useState("");
+
+    const getQuestions = async () => {
+    console.log(lectureText)
+    let body = {
+      info:lectureText
+    }
+
+    let requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }
+    var i = await fetch('http://localhost:4000/getQuestions', requestOptions)
+    var r = await i.json()
+
+    console.log(r)
+
+    }
 
     return(
         <div className="container-fluid poppin">
@@ -20,15 +40,15 @@ function MainPage(props) {
                 and it will generate a comprehensive list of questions that can help review and reinforce new material.
               </p>
               <br/>
-                <button type="button" className="btn btn-success">
+                <button type="button" className="btn btn-success" onClick={getQuestions}>
                     Generate Questions
                 </button>
                 <br />
                 <br />
                 <div className="form-group" style={{height:"40vh", width:"60vw", margin: "auto"}}>
                     <textarea
-                        value={storyText}
-                        onChange={(e)=>{setStoryText(e.target.value)}}
+                        value={lectureText}
+                        onChange={(e)=>{setLectureText(e.target.value)}}
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         style={{minHeight:"40vh", fontSize: 28, marginBottom: 100}}
