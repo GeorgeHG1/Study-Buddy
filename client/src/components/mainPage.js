@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import Flashcard from './card.js';
+
+const flashcard = {
+  'id': 0, 'question': "Who is gay?", 'answer': "Carl" 
+}
 
 function MainPage(props) {
     const [storyText, setStoryText] = useState("");
@@ -31,6 +36,7 @@ function MainPage(props) {
                     </textarea>
                 </div>
               <br/>
+              <Flashcard flashcard={flashcard}/>
             </div>
         </div>
       </div>
