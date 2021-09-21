@@ -1,4 +1,4 @@
-# HTNF21
+# Study Buddy
 # Inspiration
 In the modern era there are a plethora of online resources and programs created to help students study, however, studying efficiently is still a struggle every student faces partially due to the fact that every resource covers a topic rather than being tailor made for what the student needs to know for their exams. This problem is exacerbated now during the era of online learning, wehre resources and access to teachers are less readily avaailable. Given how personal and widespread this struggle is we sought to create a webapp that would take an input of text the student is being tested on and produce an output of questions and answers based on the input, thereby removing any irrelevant information commonly found on other sources. We hope that by creating StudyBuddy we will give struggling students another avenue to tackle their studies efficiently. 
 
